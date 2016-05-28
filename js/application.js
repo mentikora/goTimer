@@ -16,26 +16,17 @@ $('document').ready(function(){
 	    }, 1000);
 	});
 
-	$('.start').on('click', function(){
+	$('.start').on('click', function(event){
+		event.stopPropagation();
 		
-		var time = $('#time').val();
-		if ( time.length === 0 ) {
-			alert('Enter time');
-		} else {
-			$(this).parent().addClass('active');
-			$('.player').css('padding','5%');
-			$(this).closest('.step').find('input').addClass('hidden');
-		}
-		counter();
+		$(this).parent('.player').addClass('active');
+		$('.player').css('padding','5%');
+		$(this).closest('.step').find('input').addClass('hidden');
+
+		$('.player').on('click', function(){
+			$(this).removeClass('active');	
+			$(this).siblings('.player').addClass('active');
+		});
 	});
-
-	function counter(){
-		
-	}
-
-	// $('.player').on('click', function(){
-	// 	$(this).siblings('.player').addClass('active');
-	// 	$(this).removeClass('active');
-	// });
 
 });
