@@ -17,14 +17,25 @@ $('document').ready(function(){
 	});
 
 	$('.start').on('click', function(){
-		$('.player').css('padding','5%').addClass('ingame');
-		$(this).closest('.step').find('input').addClass('hidden');
-		$(this).closest('.player').addClass('active');
+		
+		var time = $('#time').val();
+		if ( time.length === 0 ) {
+			alert('Enter time');
+		} else {
+			$(this).parent().addClass('active');
+			$('.player').css('padding','5%');
+			$(this).closest('.step').find('input').addClass('hidden');
+		}
+		counter();
 	});
 
-	$('.ingame').on('click', function(){
-		$(this).siblings('.ingame').addClass('active');
-		$(this).removeClass('active');
-	});
+	function counter(){
+		
+	}
+
+	// $('.player').on('click', function(){
+	// 	$(this).siblings('.player').addClass('active');
+	// 	$(this).removeClass('active');
+	// });
 
 });
