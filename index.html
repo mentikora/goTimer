@@ -10,35 +10,50 @@
 <body>
 	
 	<div id="wrapper">
+
 		<!-- rotation -->
-		<div class="step">
-			<div>
-				<p>
-					tap image to change timer position
-				</p>
-				<img src="img/rotate.png" alt="" class="rotate">
-				<input class="btn-style" type="button" value="next" name="select_rotation">
-			</div>
-		</div>
+		<!-- <div class="step">
+			<p>
+				tap image to change timer position
+			</p>
+			<br>
+			<br>
+			<img src="img/rotate.png" alt="" class="rotate">
+			<br>
+			<br>
+			<input class="btn-style next" type="button" value="next" name="select_rotation">
+		</div> -->
 		
 		<!-- set time -->
 		<div class="step">
-			<div>
-				<p>Main Time, mins</p>
-				<input class="input-style" type="number">
-				<input class="btn-style" type="button" value="next">
-			</div>
+			<input class="btn-style prev" type="button" value="prev">
+			<br>
+			<br>
+			<p>Main Time, mins</p>
+			<br>			
+			<input class="input-style" type="number" id="time" value="10">			
+			<br>
+			<br>
+			<input class="btn-style next" type="button" value="next">
 		</div>
 		
 		<!-- players -->
 		<div class="step">
-			<div>
+			
+			<input class="btn-style prev" type="button" value="prev">
+			<div class="player">
 				
-				<div class="player">
-					
-				</div>
-
+				<input class="btn-style start" type="button" value="start">
+				<hr>
+				<div class="timer_table player_time"></div>
 			</div>
+			<div class="player">
+				<input class="btn-style start" type="button" value="start">
+				<hr>
+				<div class="timer_table"></div>
+				
+			</div>
+
 		</div>
 	</div>
 

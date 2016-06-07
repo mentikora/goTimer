@@ -12,34 +12,34 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
-	display: block;
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
 ol, ul {
-	list-style: none;
+  list-style: none;
 }
 blockquote, q {
-	quotes: none;
+  quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
-	content: none;
+  content: '';
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
@@ -47,57 +47,89 @@ table {
 /*https://designcode.io/iosdesign-guidelines*/
 /*https://developer.apple.com/library/ios/documentation/UserExperience/Conceptual/MobileHIG/InteractivityInput.html#//apple_ref/doc/uid/TP40006556-CH55-SW1*/
 
+::-webkit-scrollbar { 
+  display: none; 
+}
+
+body{
+  overflow-y: hidden; 
+}
+
 html,
 body,
 #wrapper{
-	height: 100%;
-	min-height: 100%;
-	font-size: 17px;
+  height: 100%;
+  min-height: 100%;
+  font-size: 17px;
 
-	text-rendering: optimizeLegibility;
+  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -moz-font-feature-settings: 'liga', 'kern';
 }
 
 body{
-	font-family: 'Montserrat', sans-serif;
-	background: #efeff4;
-	color: #000000;
+  font-family: 'Montserrat', sans-serif;
+  background: #efeff4;
+  color: #000000;
 }
 
 img.rotate{
-	margin: 15px;
-	cursor: pointer;
+  /*margin: 15px;*/
+  cursor: pointer;
 }
 
 .step{
-	display: flex;
-	height: 100%;
-	width: 100%;
-	justify-content: center;
-	align-items: center;	
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;  
 
-	text-align: center;
+  text-align: center;
+  flex-direction: column;
 }
 
 input{
-	width: 100%;
-	height: 48px;
-	line-height: 48px;
-	border: 0;
-	outline: 0;
-	padding: 0;
-	text-align: center;
+  width: 300px;
+  height: 48px;
+  line-height: 48px;
+  border: 0;
+  outline: 0;
+  padding: 0;
+  text-align: center;
+  transition: opacity 1s ease-out;
 }
+  input.hidden{
+    transition: opacity 1s ease-out;
+    opacity: 0; 
+    height: 0;
+    overflow: hidden;
+    
+  }
 .btn-style{
-	background-color: #007aff;
-	
-	font-size: 17px;
-	color: #fff;
+  background-color: #007aff;
+  
+  font-size: 17px;
+  color: #fff;
 
-	cursor: pointer;
+  cursor: pointer;
 }
 .input-style{
-	font-size: 24px;
+  font-size: 24px;
 }
+
+.player{
+  padding: 25px;
+  font-size: 50px;
+  margin: 25px 0;
+  cursor: pointer;
+
+  transition: all .3s ease-in-out;
+
+  border: 2px solid rgba(0,0,0, .15);
+}
+  .player.active{
+    background-color: green;
+    color: #fff;
+  }
