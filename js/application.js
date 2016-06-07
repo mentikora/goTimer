@@ -16,51 +16,54 @@ $('document').ready(function(){
 	    }, 1000);
 	});
 
+	var currentPlayer;
+
 	$('.start').on('click', function(event){
 		event.stopPropagation();
 		
-		var time = $('#time').val();
+		count();
 
 		$(this).parent('.player').addClass('active');
 		$('.player').css('padding','5%');
 		$(this).closest('.step').find('input').addClass('hidden');
 
-		$('.timer_table').append(time);
+		currentPlayer = $(this).parent('.player').data('player');
+		console.log(currentPlayer);
+
+		$('.timer_table').append(time/60);
 
 		$('.player').on('click', function(){
+			currentPlayer = $(this).data('nextplayer');
+			console.log(currentPlayer);
+
 			if ( $(this).hasClass('active') ) {
 				$(this).removeClass('active');	
 				$(this).siblings('.player').addClass('active');
-			} else {}
+			}
 		});
 	});
 
+	var timers = [600000,600000];
+	
+	function timeFormat(sec){
+		var s = Math.floor(sec % 60000 / 1000);
+		var m = Math.floor(sec - sec % 60000 ) / 60000;
+		return m.toString() + ':' + s.toString()
+	}
 
-	// 
-	function timer(){
-		var time = 0;
-		var running = 0;
+	function count(){
+		setTimeout(function(){
+			time--;
+			timers[currentPlayer] -= 100;
 
-		/*function startPause(){
-			if (running==0) {
-				running = 1;
-				increment();
-			} else {
-				running = 0;
+			$('.player[data-player='+currentPlayer+'] .timer_table').text(timeFormat(timers[currentPlayer]));
+
+			if ( timers[0] <=0 || timers[1] <=0 ) {
+				return;
 			}
-		}*/
-		/*function reset(){
-			running = 0;
-			time = 0;
-		}*/
-		function increment(){
-			setTimeout(function(){
-				time--;
-				var mins = Math.floor(time/10/60);
-				var secs = Math.floor(time/10);
-				increment();
-			}, 100);
-		}
+
+			count();
+		}, 100);
 	}
 
 });
